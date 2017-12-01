@@ -1,0 +1,74 @@
+
+
+#buscador-index{
+    
+      align-content: center;
+     transform: translateX(125%);
+}
+
+
+.card-text{
+      background-color:#EBF5FB  ;
+      
+}
+
+/* Footer */
+
+footer {
+    background-color: #34495E;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   height: 8%;
+    text-align: center;
+    color: #CCC;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+
+.bloque {
+    text-align: center;
+}
+
+#fondoBloque {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* NAV */
+
+#navegador{
+      background-color: #EAF2F8;
+}
+
+/* AvatarFile*/
+
+#avatarFile{
+    text-align: center;
+  margin: auto;
+}
+
+/*btnActualizar*/
+
+#btnActualizar{
+    text-align: center;
+        display: block;
+    width: 150px;
+    height: 25px;
+  
+    margin: 0 auto;
+    
+    background: #EBF5FB;
+
+    box-shadow: inset 0px 0px 6px #fff;
+    -webkit-box-shadow: inset 0px 0px 6px #fff;
+    border: 1px solid #62C2F9;
+    border-radius: 10px;
+    float: left;
+}
