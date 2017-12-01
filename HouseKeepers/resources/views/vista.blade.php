@@ -7,7 +7,7 @@
     <div class="col-md-12 text-center ">
     
     
-   <form action="" method="post"> 
+  
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -31,11 +31,12 @@
 							<td><?php echo"$row->apellido"?></td>
 							<td><?php echo"$row->direccion"?></td>
 							<td><?php echo"$row->telefono"?></td>
+						
 						 @if (Auth::guest())
 							<td colspan="5">No permitido</td> 
 								  @else
 								
-						<td> <a href="" class="btn btn-sm btn-warning">Show</a></td>
+						<td> <a href="{{ route('housekeepers.show',$row->id ) }}" class="btn btn-sm btn-warning">Show</a></td>
 							  
 				        </tr>
 						@endif
@@ -50,7 +51,7 @@
 				 
 				
 		</table>
-     </form>
+  
 
   </div>
 

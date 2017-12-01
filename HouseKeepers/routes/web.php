@@ -34,6 +34,7 @@ Route::get('empleadas', function () {
 
 
 Route::get('perfil/{id}', 'EmpleadaController@show')->name('perfil.show');
+Route::get('housekeepers/{id}', 'EmpleadaController@showProfile')->name('housekeepers.show');
 
 Route::get('vista', 'EmpleadaController@selectAll');
 Route::post('perfil/{id}', 'EmpleadaController@update_avatar')->name('perfil.update');

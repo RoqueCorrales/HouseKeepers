@@ -122,4 +122,20 @@ class EmpleadaController extends Controller
         return view('vista',compact('empleadas'));
 
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showProfile($id)
+    {
+       
+          $empleada = User::where('id',$id)->get();
+       // var_dump($empleada);die;
+        return view('housekeepers',compact('empleada'));
+    }
+
 }
