@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class HorarioController extends Controller
+use App\Comentario;
+use App\User;
+use  Carbon\Carbon;
+class ComentarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +23,24 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create(Request $request)
+    
     {
+        $date = Carbon::now();
         
+         $date->toDateString(); 
+       Comentario::create([
+         'user_id_receive' => $request->input('idEmpleada'),
+         'user_id' =>$request->input('idUser'),
+        'comentario' =>$request->input('comentario'),
+        'ingreso' =>$date
         
-        
+           
+
+
+            
+        ]);
+        return back();
     }
 
     /**
@@ -47,7 +62,8 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
-        return view('cotizar');
+        $comentarios = Comentario::where('user_id_receive', '$id')->get();
+        
     }
 
     /**

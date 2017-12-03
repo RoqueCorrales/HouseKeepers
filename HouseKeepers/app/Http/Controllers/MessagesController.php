@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  Carbon\Carbon;
+use App\Messages;
+use App\User;
 
-class HorarioController extends Controller
+
+class MessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +25,23 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create(Request $request)
     {
+        $date = Carbon::now();
         
+         $date->toDateString(); 
+       Messages::create([
+         'user_id_receive' => $request->input('idEmpleada'),
+         'user_id' =>$request->input('idUser'),
+        'message' =>$request->input('mensaje'),
+        'ingreso' =>$date
         
-        
+           
+
+
+            
+        ]);
+        return back();
     }
 
     /**
@@ -47,7 +63,23 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
-        return view('cotizar');
+               
+        $empleada = User::where('id',$id)->get();
+        // $comentarios = Comentario::where('user_id_receive', $id)->get();
+      //   $query = ('SELECT u.nombre, u.apellido,u.image, c.comentario FROM
+       //   users u, comentarios c WHERE u.id =?');
+                  //$res=DB::select($query);
+                    $mensajes = User
+                    ::join('messages', 'users.id', '=', 'messages.user_id_receive')
+                    ->where('user_id', '=', $id) 
+                    ->select('users.nombre', 'users.apellido', 'users.image', 'messages.message','messages.id','messages.ingreso')
+                   
+                    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+                    ->get();
+                
+         //print_r($result);die;
+       return view('mensajeria',compact('empleada','mensajes'));
+
     }
 
     /**
@@ -81,6 +113,6 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Messages::destroy($id);  
     }
 }

@@ -55,7 +55,11 @@
 
                                 <ul class="dropdown-menu">
                                 <li><a href="{{ route('perfil.show',auth()->user()->id) }}">Perfil</a></li>
-                                    <li>
+                                     <li><a href="{{route('ms.show',auth()->user()->id)}}">Buzon de Mensajes</a></li>
+                                      <li><a href="">Actualizar Cuenta</a></li> 
+                                    <li><a href="">Eliminar Cuenta</a></li>
+                                     
+                                      <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -66,8 +70,6 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li><a href="">Eliminar Cuenta</a></li>
-                                    
                                 </ul>
                             </li>
                              

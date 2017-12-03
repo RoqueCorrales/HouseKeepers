@@ -31,13 +31,15 @@ Route::get('empleadas', function () {
     return view('empleadas');
 });
 
-
-
+Route::get('cotizar/{id}','HorarioController@show')->name('cotizar.show');
+Route::get('mensajeria/{id}','MessagesController@show')->name('ms.show');
+//Route::get('mensajeria/{id}','MessagesController@destroy')->name('message.del');
 Route::get('perfil/{id}', 'EmpleadaController@show')->name('perfil.show');
 Route::get('housekeepers/{id}', 'EmpleadaController@showProfile')->name('housekeepers.show');
-
+Route::post('housekeepers', 'MessagesController@create')->name('message.save');
 Route::get('vista', 'EmpleadaController@selectAll');
 Route::post('perfil/{id}', 'EmpleadaController@update_avatar')->name('perfil.update');
+//Route::post('housekeepers', 'ComentarioController@create')->name('comentario.save');
 
 Route::get('/cotizar', function () {
     return view('cotizar');

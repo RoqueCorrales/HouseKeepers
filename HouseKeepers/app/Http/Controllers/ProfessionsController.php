@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HorarioController extends Controller
+class ProfessionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +21,9 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create()
     {
-        
-        
-        
+        //
     }
 
     /**
@@ -47,7 +45,7 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
-        return view('cotizar');
+        //
     }
 
     /**

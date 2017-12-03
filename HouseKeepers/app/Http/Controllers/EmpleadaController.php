@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Comentario;
 use Image;
-
+use Illuminate\Support\Facades\DB; 
 
 class EmpleadaController extends Controller
 {
@@ -118,7 +119,7 @@ class EmpleadaController extends Controller
     public function selectAll()
     {
         $empleadas = User::where('empleada', '1')->get();
-       
+        
         return view('vista',compact('empleadas'));
 
     }
@@ -134,8 +135,20 @@ class EmpleadaController extends Controller
     {
        
           $empleada = User::where('id',$id)->get();
-       // var_dump($empleada);die;
-        return view('housekeepers',compact('empleada'));
+         // $comentarios = Comentario::where('user_id_receive', $id)->get();
+       //   $query = ('SELECT u.nombre, u.apellido,u.image, c.comentario FROM
+        //   users u, comentarios c WHERE u.id =?');
+                   //$res=DB::select($query);
+                     $comentarios = User
+                     ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
+                     ->where('user_id', '=', $id) 
+                     ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso')
+                    
+                     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+                     ->get();
+                 
+          //print_r($result);die;
+        return view('housekeepers',compact('empleada','comentarios'));
     }
 
 }

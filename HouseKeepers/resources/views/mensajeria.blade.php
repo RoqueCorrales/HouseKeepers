@@ -6,45 +6,35 @@
 
 <div class="container">
   <div class="title">Mensajes</div>
-  <div class="subtitle">Todos los mensajes se veran aqui</div>
+
 </div>
 
 <div class="container">
     <div class="row">
 
       <div class="col-sm-6 col-md-6">
+       <?php 
+				if (!$mensajes->isEmpty()) {
+					foreach($mensajes as $row)
+					{ ?>
             <div class="alert-message alert-message-info">
                 <h4>
-                    Alondra Mendez</h4>
+                    {{$row->nombre}} {{$row->apellido}}</h4>
                 <p>
-                    Muy buena trabajadora gracias por tu servicio, estaremos encontacto para el futuro.<br><a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
+                  {{$row->message}}<br>
+                  route('message.del',$row->id )
+                    <a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
             </div>
-        </div>
-<div class="col-sm-6 col-md-6">
-            <div class="alert-message alert-message-info">
-                <h4>
-                    Alondra Mendez</h4>
-                <p>
-                    Muy buena trabajadora gracias por tu servicio, estaremos encontacto para el futuro.<br><a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
-            </div>
+             <?php }
+				}else{ ?> 
+<h4>
+                    NO TIENES MENSAJES</h4>
+
+                    <?php } ?>
         </div>
 
-        <div class="col-sm-6 col-md-6">
-            <div class="alert-message alert-message-info">
-                <h4>
-                    Alondra Mendez</h4>
-                <p>
-                    Muy buena trabajadora gracias por tu servicio, estaremos encontacto para el futuro.<br><a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6">
-            <div class="alert-message alert-message-info">
-                <h4>
-                    Alondra Mendez</h4>
-                <p>
-                    Muy buena trabajadora gracias por tu servicio, estaremos encontacto para el futuro.<br><a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
-            </div>
-        </div>
+
+    
         </div>
         </div>
 
