@@ -5,16 +5,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">HELPERS</div>
+                <div class="panel-heading">Contratacion EXITOSA.</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
+                   
                         <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                          <h1>  Favor calificar empleada cuando termine el tiempo de contratacion.
+     </h1>                   </div>
+                  
 
-                    Loggeado!
+                    
                 </div>
             </div>
         </div>

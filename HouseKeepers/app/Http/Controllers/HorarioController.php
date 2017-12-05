@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Horario;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use  Carbon\Carbon;
 class HorarioController extends Controller
 {
     /**
@@ -34,9 +37,10 @@ class HorarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        //
+      Horario::create($request->all());
+      return view('exitosa');
     }
 
     /**
@@ -47,7 +51,8 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
-        return view('cotizar');
+        $empleada = User::where('id',$id)->get();
+        return view('cotizar',compact('empleada'));
     }
 
     /**
@@ -82,5 +87,108 @@ class HorarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function calcular (Request $request, $id)
+    {
+ $lunes =0;
+ $martes =0;
+ $miercoles =0;
+ $jueves =0;
+ $viernes=0;
+ $sabado =0;
+ $domingo=0;
+ $hospedaje=0;
+ $descripcion1="";
+ $totaldias=0;
+
+
+
+        if (isset($request['SeQueda'])) {
+             if($request['SeQueda']=='on'){
+                         $descripcion1 ="Empleada debe quedarse";
+                     
+                         }
+              }
+
+              if($request['infantes']==1){
+                  $descripcion1 =$descripcion1 . ", debe estar al cuidado de infantes";
+              }
+              if($request['adultos']==1){
+                $descripcion1 =$descripcion1 .", debe estar al cuidado de adultos";
+            }
+
+            $descripcion1 = $descripcion1 ." en ". $request['lugar'].".";
+
+            if($request['lunes']==1){
+                $lunes =1;
+                $totaldias =1;
+            }
+    
+            if($request['martes']==1){
+                $martes =1;
+                $totaldias=$totaldias +1;
+            }
+       
+            if($request['miercoles']==1){
+                $miercoles =1;
+                $totaldias=$totaldias +1;
+            }
+        
+            if($request['jueves']==1){
+                $jueves =1;
+                $totaldias=$totaldias +1;
+            }
+      
+            if($request['viernes']==1){
+                $viernes =1;
+                $totaldias=$totaldias +1;
+            }
+       
+            if($request['sabado']==1){
+                $sabado =1;
+                $totaldias=$totaldias +1;
+            }
+       
+            if($request['domingo']==1){
+                $domingoes =1;
+                $totaldias=$totaldias +1;
+            }
+        
+
+            $empleada = User::where('id',$id)->get();
+
+            $monto=($empleada[0]->precio * $totaldias)*4;
+
+            $horario= new Horario();
+              $horario->user_id = $empleada[0]->id;
+              $horario->user_id_contratista = auth()->user()->id;
+              $horario->lunes = $lunes;
+              $horario->martes =$martes;
+              $horario->miercoles = $miercoles;
+              $horario->jueves = $jueves;
+              $horario->viernes =$viernes;
+              $horario->sabado =$sabado;
+              $horario->domingo =$domingo;
+              $horario->fechainicio =$request['dateInicio'];
+              $horario->fechafin = $request['dateFinalizacion'];
+              $horario->descripcion = $descripcion1;
+
+
+
+        
+            return view('factura',compact('empleada','monto','horario'));
+
+
+
     }
 }

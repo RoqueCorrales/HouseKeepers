@@ -44,8 +44,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Iniciar Sesion</a></li>
+                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li class="dropdown">
                              <img src="/uploads/avatars/{{ Auth::user()->image }}" style="width:32px; height:32px; position:absolute; top:10px; border-radius:50%">

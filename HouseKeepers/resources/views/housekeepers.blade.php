@@ -102,7 +102,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             
-              <form method="POST" action="">
+              <form method="POST" action="{{ route('comentario.save') }}">
               {{ csrf_field() }} 
                 <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?"></textarea>
             <textarea class="form-control" style="display:none;"  name="idUser">{{auth()->user()->id }}</textarea>  

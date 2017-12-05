@@ -6,83 +6,45 @@
    <div class="container" id= "contenedorCotizar">
     <div class="row">
   <div class="col-md-12">
-            <div class="panel" id= "contenedorSecundarioCotizar">
-                <form align="center" action="/cotiza-tu-empleada-domestica" onsubmit="" id="LimpiezasPreFastAddForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
-               
-                
-                          
-                <div class="limpieza nodefault container-fluid">
-                    <h2 class="align-center"><strong>Cotiza sin cargo</strong></h2>
-<br>
-                    <div style="display:block;">
 
-                        <div class="row align-center">
-                          <div class="col-md-12">
-                             <div class="form-group">
-                            <label for="telefono" >Deseas ser empleada? </label>
+<div class="panel" >
+ <form align="center"   method="POST" action="{{route('calcular.show',$empleada[0]->id )}}" >
+                 {{ csrf_field() }}
+                    <h2 class="align-center"><strong>Cotiza sin cargo</strong></h2>
+
+                            <label for="telefono" >Con cama? </label>
 
                             <br>
-                                <input id="checkboxEmpleada" type="checkbox" name="empleada"   checked="checked">SI<br>
-                                
-                        </div>
-                          </div>
-                       
+                                <input id="checkboxEmpleada" type="checkbox" name="SeQueda"   checked="checked">SI<br>
 
-
-                        </div>
-                        <br>
-                    </div>
 
                     <div class="row">
                         <div class="col-sm-12">
                             <p class="align-center" id="textEligeDias">Elige el/los días</p>
-                            <div class="form-group" id="dias" style="display: block;">
-                                <input type="checkbox" id="mondayclass" value="0" onclick="seleccionarDia('monday');" class="css-checkbox" checked="checked">
-                                <label for="mondayclass" class="css-label"><span>Lunes</span></label>
-                               
                             
-                                <br>
-                                <input type="checkbox" id="tuesdayclass" value="0" onclick="seleccionarDia('tuesday');" class="css-checkbox">
-                                <label for="tuesdayclass" class="css-label"><span>Martes</span></label>
-                            
-                                <br>
-                                <input type="checkbox" id="wednesdayclass" value="0" onclick="seleccionarDia('wednesday');" class="css-checkbox">
-                                <label for="wednesdayclass" class="css-label"><span>Miércoles</span></label>
-                               
-                                <br>
-                                <input type="checkbox" id="thursdayclass" value="0" onclick="seleccionarDia('thursday');" class="css-checkbox" checked="checked">
-                                <label for="thursdayclass" class="css-label"><span>Jueves</span></label>
-                               
-                                <br>
-                                <input type="checkbox" id="fridayclass" value="0" onclick="seleccionarDia('friday');" class="css-checkbox">
-                                <label for="fridayclass" class="css-label"><span>Viernes</span></label>
-                               
-                                <br>
-                                <input type="checkbox" id="saturdayclass" value="0" onclick="seleccionarDia('saturday');" class="css-checkbox">
-                                <label for="saturdayclass" class="css-label"><span>Sábado</span></label>
-                                
-                                <br>
-                                <input type="checkbox" id="sundayclass" value="0" onclick="seleccionarDia('sunday');" class="css-checkbox">
-                                <label for="sundayclass" class="css-label"> <span>Domingo</span></label>
-                                
-                            </div>
+                          <label><input id="lunes" type="checkbox" name="lunes" value="1">Lunes </label>
+                     <label><input id="martes" type="checkbox" name="martes" value="1">Martes </label>
+                      <label><input id="miercoles"type="checkbox" name="miercoles" value="1">Miercoles </label>
+                       <label><input id="jueves" type="checkbox" name="jueves" value="1">Jueves </label>
+                        <label><input id="viernes" type="checkbox" name="viernes" value="1">Viernes </label>
+                         <label><input id="sabado" type="checkbox" name="sabado" value="1">Sabado </label>
+                          <label><input id="domingo" type="checkbox" name="domingo" value="1">Domingo </label>
+                        
 
                           
 
-                            <br>
+                          <br>
+                           <br>
                             
-                            <div id="detalles_servicio" style="display: none;">
-                                <br>
-                                <br>
+                            <div id="detalles_servicio" >
+                                
                                 <p class="align-center" id="textEligeDias">Detalles del servicio (opcional)</p>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <input type="checkbox" id="kids" name="kids" value="1" class="css-checkbox">
-                                        <label for="kids" class="css-label"> <span>Cuidado de niños</span></label>
+                                        <label><input type="checkbox" name="infantes" value="1">Cuidado de infantes. </label>
                                     </div>
                                     <div class="col-xs-12">
-                                        <input type="checkbox" id="eldercare" name="eldercare" value="1" class="css-checkbox">
-                                        <label for="eldercare" class="css-label"> <span>Cuidado de adultos mayores</span></label>
+                                       <label><input type="checkbox" name="adultos" value="1">Cuidado de adultos mayores. </label>
                                     </div>
                                 </div>
                             </div>
@@ -91,75 +53,137 @@
 
                     <br>
 
-                    <!-- <BR class="hidden-xs"> -->
-                  
-                    <div class="row" id="divHoraInicio" style="display: block;">
-                        <div class="col-sm-12">
+  <div class="row">
+                           <div class="col-md-4 col-md-offset-4">
+                
                             <p class="align-center">
                                 Horario de inicio
-                                <!-- <li id="span_detalle_pack_x" style="font-size:1em; display:none;"></li> -->
-                            </p>
-                            <div class="form-group">
-                                <select name="horaInicio" id="horaInicio" class="form-control align-center" required="required">
-                                    <option value="">Elige un horario</option>
-                                    <option value="6">06:00</option>
-                                    <option value="7">07:00</option>
-                                    <option value="8">08:00</option>
-                                    <option value="9">09:00</option>
-                                    <option value="10">10:00</option>
-                                    <option value="11">11:00</option>
-                                    <option value="12">12:00</option>
-                                    <option value="13">13:00</option>
-                                    <option value="14">14:00</option>
-                                    <option value="15">15:00</option>
-                                    <option value="16">16:00</option>
-                                    <option value="17">17:00</option>
-                                    <option value="18">18:00</option>
-                                    <option value="19">19:00</option>
-                                    <option value="20">20:00</option>
-                                    <option value="21">21:00</option>
-                                    <option value="22">22:00</option>
-                                </select>
-                            </div>
+                              </p>
 
+
+                          
+
+        
+
+             
+
+                  
+                        <div class="form-group">
+                            <label for="date">Fecha Inicio</label>
+                             <input type="date" class="form-control datepicker" name="dateInicio" required>
+                             
                         </div>
-                    </div>
+                      <div class="form-group">
+                            <label for="date">Fecha Finalizacion</label>
+                             <input type="date" class="form-control datepicker" name="dateFinalizacion" required>
+                             
+                        </div>
 
-                    <div class="row" id="_address">
-                        <div class="col-sm-12">
+                </div>
+               
+            </div>
+
+
+
+                                <div class="row" id="_address">
+                        <div class="col-md-4 col-md-offset-4">
                             <p class="align-center">
                                 En dónde se realizará
                             </p>
-                            <div class="form-group">
-                                <select name="data[Job][city_id]" id="city_id" class="form-control align-center" required="required">
-<option value="">Elige una ciudad...</option>
-<option value="">Alajuela</option>
-<option value="">Cuidad Quesada</option>
-<option value="">San Jose</option>
-<option value="">Puntarenas</option>
-<option value="">Limon</option>
-<option value="">Guanacaste</option>
-</select>                            </div>
+                            <input type="text" class="form-control" name="lugar" required>
                         </div>
                     </div>
 
                                          
                     
-                    <div id="submit" style="display: block">
-                        <center>
-                         
-                   <input type="submit" class="btn btn-primary btn-block" value="COTIZAR" >
 
-     
-                        </center>
+              
 
-                        <br>
+
+
+<br>
+<br>
+
+
+
+            <div>
+              <!-- Trigger the modal with a button -->
+              <button id="botonCotizar" style="display:none; margin:auto;"type="submit" class="btn btn-info btn-sm" >Cotizar Empleada</button>
+               <?php if(!isset($monto)){
+                   $monto =0;
+               }?>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Empleada cotizacion</h4>
+                     
                     </div>
+                    <div class="modal-body">
+                      
+                    {{$monto}}
 
+
+                     
+
+                      <br>
+                      <br>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default">Contratar</button>
+                    </div>
+                  </div>
 
                 </div>
-            </form></div>
+              </div>
+
             </div>
+            <br>
+
+<br>
+<br>
+</div>
+
+
+
+
+<br>
+<br>
+                
+</form>
+
+
+<br>
+<br>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+            </div>
+            
           </div>
           <br>
           <br>
@@ -173,6 +197,70 @@
 
 
 
+
+
+
+@endsection
+
+
+@section('script')
+<script>
+$('#lunes').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#martes').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#miercoles').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#jueves').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#viernes').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#sabado').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+    
+$('#domingo').change(function() {
+        if($(this).is(":checked")) {
+        $('#botonCotizar').css('display','block'); 
+       
+
+        }
+    });
+</script>
 
 
 
