@@ -125,6 +125,41 @@ class EmpleadaController extends Controller
 
     }
 
+    public function buscar(Request $request)
+    {
+        $busqueda = $request['buscar'];
+
+        if(empty($request['buscar'])){
+            
+            $empleadas = User::where('empleada', '1')
+            ->where('activa', '1')->get(); 
+        }else{
+        
+        $empleadas = User::where('activa', '=','1')
+        ->where('empleada', '=','1')
+         ->where('nombre','=',$busqueda)
+        ->orwhere('estudio','=' ,$busqueda)
+        ->orwhere('direccion','=',$busqueda)
+       
+        
+        
+        
+        ->get();
+        }
+        
+
+       // if($empleadas->isEmpty()  ){
+           
+          //  $empleadas = User::where('empleada', '1')
+        //     ->where('activa', '1')->get(); 
+       // }
+
+     
+        
+        return view('vista',compact('empleadas'));
+
+    }
+
 
     /**
      * Display the specified resource.

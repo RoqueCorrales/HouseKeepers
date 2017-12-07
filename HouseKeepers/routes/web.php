@@ -44,6 +44,7 @@ Route::post('perfil/{id}', 'EmpleadaController@update_avatar')->name('perfil.upd
 Route::post('housekeepers/comentario', 'ComentarioController@create')->name('comentario.save');
 Route::get('housekeepers/comentario/delete/{id}', 'ComentarioController@destroy')->name('comentario.delete');
 Route::get('empleada/delete/{id}', 'EmpleadaController@destroy')->name('cuenta.delete');
+Route::post('empleada/buscar', 'EmpleadaController@buscar')->name('empleada.buscar');
 
 
 

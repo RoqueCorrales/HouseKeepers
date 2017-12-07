@@ -13,15 +13,15 @@
      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2">
         <h2 class="text-center blanco">Buscar empleada</h2>
        
-       <form class="form-horizontal" method="POST"  >
+       <form class="form-horizontal" method="POST" action="{{ route('empleada.buscar') }}" >
                         {{ csrf_field() }} 
         <div class="input-group">                        
                              
-                        <input class="form-control" placeholder="Buscar empleada" type="text">
+                        <input class="form-control" name="buscar" placeholder="Buscar empleada" type="text">
                     
                         <span class="input-group-btn">
                             <!--<button class="btn btn-primary"  type="submit"><span class="glyphicon glyphicon-search"></span> BUSCAR</button>-->
-                            <a class="btn btn-primary" href="{{ url('vista') }}" role="button">BUSCAR</a>	
+                            <button class="btn btn-primary" type="submit"  role="button">BUSCAR</button>	
 
                         </span>
                     </div>
