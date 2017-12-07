@@ -89,7 +89,8 @@ class EmpleadaController extends Controller
      */
     public function destroy($id)
     {
-        
+      User::destroy($id);
+
     }
 
     public function update_avatar(Request $request, $id){
@@ -141,8 +142,8 @@ class EmpleadaController extends Controller
                    //$res=DB::select($query);
                      $comentarios = User
                      ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
-                     ->where('user_id', '=', $id) 
-                     ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso')
+                     ->where('user_id_receive', '=', $id) 
+                     ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
                     
                      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
                      ->get();

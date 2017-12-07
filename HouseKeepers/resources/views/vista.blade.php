@@ -1,63 +1,65 @@
 @extends('layouts.app')
 
+
+
+
 @section('content')
-    <div class="container">
-    <div class="row">
-
-    <div class="col-md-12 text-center ">
-    
-    
-  
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Apellido</th>
-                    <th>Ubicacion</th>
-                    <th>Telefono</th>
-                    <th>Mostrar Empleada</th>
-					
-				</tr>
-			</thead>
-			
-
-			<tbody>
-				<?php 
+		
+<div class="container">
+	<div class="row">
+<?php 
 				if (!$empleadas->isEmpty()) {
 					foreach($empleadas as $row)
 					{ ?>
-				        <tr>
-							<td><?php echo"$row->nombre"?></td>
-							<td><?php echo"$row->apellido"?></td>
-							<td><?php echo"$row->direccion"?></td>
-							<td><?php echo"$row->telefono"?></td>
-						
-						 @if (Auth::guest())
-							<td colspan="5">No permitido</td> 
-								  @else
-								
-						<td> <a href="{{ route('housekeepers.show',$row->id ) }}" class="btn btn-sm btn-warning">Show</a></td>
-							  
-				        </tr>
-						@endif
-					<?php }
+
+		<div class="col-lg-3 col-sm-6">
+	
+	
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <img alt="" src="">
+                </div>
+                <div class="info">
+                    <div class="title">
+
+					 <img src="/uploads/avatars/{{ $row->image }}" style="width:100px; height:100px; float:center; border-radius:50%; "/>
+           <br>
+                        <a>{{$row->nombre}} {{$row->apellido}}</a>
+                    </div>
+                    <div class="desc"><span class="glyphicon glyphicon glyphicon-home"></span> {{$row->direccion}}</div>
+                    <div class="desc"><span class="glyphicon glyphicon glyphicon-envelope" ></span> {{$row->email}}</div>
+                    <div class="desc"><span class="glyphicon 	glyphicon glyphicon-earphone" ></span> {{$row->telefono}}</div>
+                </div>
+				 @if (Auth::guest())
+
+
+				  @else
+               
+                    <a class="btn btn-primary  btn-sm" href="{{ route('housekeepers.show',$row->id ) }}">VER
+                       
+                    </a>
+                   
+                   
+                   
+               
+				@endif
+            </div>
+	
+
+
+        </div>
+		<?php }
 				}else{ ?>
-					<tr>
-						<td colspan="4">No hay registros</td>
-					</tr>
-			<?php }
-			?>	
-			</tbody>
-				 
+					
+						<h1>No hay registros</h1>
 				
-		</table>
-  
+			<?php }
+			?>
 
-  </div>
+	</div>
+</div>
 
- </div>
- </div
- 
- 
- >
 @endsection
