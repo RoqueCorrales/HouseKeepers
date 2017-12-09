@@ -54,6 +54,18 @@ class HorarioController extends Controller
         $empleada = User::where('id',$id)->get();
         return view('cotizar',compact('empleada'));
     }
+ /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function ver($id)
+    {
+        $horarios = Horario::where('user_id',$id)->orderBy('id','DESC')->get();
+       //print_r($horario);die;
+        return view('trabajo',compact('horarios'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,6 +88,20 @@ class HorarioController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function calificar(Request $request , $id)
+    {
+        $calificacion = $request->input('calificacion');
+        print_r($calificacion);die;
+        return view('calificar');
     }
 
     /**

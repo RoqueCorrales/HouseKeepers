@@ -110,7 +110,8 @@ class RegisterController extends Controller
             'hospedaje' => $data['hospedaje'],            
             'direccion' => $data['direccion'],            
             'precio' => $data['precio'],
-            'ingreso'=>$data['ingreso']
+            'ingreso'=>$data['ingreso'],
+            'estudio'=>$data['estudio']
            
 
 

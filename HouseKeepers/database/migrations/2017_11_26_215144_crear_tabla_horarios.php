@@ -26,6 +26,8 @@ class CrearTablaHorarios extends Migration
             $table->boolean('domingo');
             $table->date('fechainicio');
             $table->date('fechafin');
+            $table->integer('puntos')->default(0);
+
             $table->longText('descripcion');
             $table->timestamps();
         });

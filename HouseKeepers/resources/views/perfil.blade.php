@@ -6,7 +6,7 @@
 
       <div class="col-md-12 text-center ">
       
-        <div class="panel panel-default">
+        <div class="panel panel-default con2">
           <div class="userprofile social ">
         
           <br>
@@ -47,7 +47,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Estudios Realizados</h1>
-            <p class="page-subtitle small">BiolOga MARINA.
+            <p class="page-subtitle small">{{$empleada->estudio}}
 
             </p>
           </div>
@@ -66,12 +66,18 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      <div class="col-md-8 col-sm-12 pull-left posttimeline">
+
+
+
+ <div class="col-md-8 col-sm-12 pull-left posttimeline">
         <div class="panel panel-default">
           <div class="panel-body">
             
-              <form method="POST" action="">
-                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis productos?"></textarea>
+              <form method="POST" action="{{ route('comentario.save') }}">
+              {{ csrf_field() }} 
+                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?"></textarea>
+            <textarea class="form-control" style="display:none;"  name="idUser">{{auth()->user()->id }}</textarea>  
+                <textarea class="form-control" style="display:none;"  name="idEmpleada">{{$empleada->id}}</textarea> 
                 <br>
                
                 <button type="submit" class="btn btn-success pull-right"> Compartir</button>
@@ -80,24 +86,28 @@
             <!-- Status Upload  --> 
           </div>
         </div>
+        <?php 
+				if (!$comentarios->isEmpty()) {
+					foreach($comentarios as $row)
+					{ ?>
         <div class="panel panel-default"> 
         <div class="panel-body">
           <div class="btn-group pull-right postbtn">
             <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
             <ul class="dropdown-menu pull-right" role="menu">
-              <li><a href="javascript:void(0)">Eliminar</a></li>
-              <li><a href="javascript:void(0)">Modificar</a></li>
+              <li><a href="{{ route('comentario.delete',$row->id)}}">Eliminar</a></li>
+              <li><a href="">Modificar</a></li>
             </ul>
           </div>
           <div class="col-md-12">
             <div class="media">
-              <div class="media-left"> <a href=""> <img src="https://bootdey.com/img/Content/avatar/avatar3.png"style="width:100px; height:100px; float:center; border-radius:50%; "/ alt="" class="media-object"> </a> </div>
+              <div class="media-left"> <a href=""> <img src="/uploads/avatars/{{ $row->image }}" style="width:100px; height:100px; float:center; border-radius:50%; "/ alt="" class="media-object"> </a> </div>
               <div class="media-body">
-                <h4 class="media-heading">Lucky Sans<br>
-                  <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+                <h4 class="media-heading">{{$row->nombre }} {{$row->apellido}}<br>
+                  <small><i class="fa fa-clock-o"></i> <?php echo"$row->ingreso"?></small> </h4>
+                <p><?php echo"$row->comentario"?> </p>
 
-              
+            
               </div>
             </div>
           </div>
@@ -107,10 +117,22 @@
        
 
         </div>
-       
-      </div> 
+      
+
       </div>
+        <br>
+      <?php }
+				}?> 
+      </div>
+
+
+
+   
     </div>
+
+    <br>
+<br>
+<br>
 </div>
  
  

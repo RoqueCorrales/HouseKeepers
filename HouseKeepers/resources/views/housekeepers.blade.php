@@ -8,7 +8,7 @@
 
       <div class="col-md-12 text-center ">
       
-        <div class="panel panel-default">
+        <div class="panel panel-default con">
           <div class="userprofile social ">
           
           <br>
@@ -42,7 +42,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Estudios Realizados</h1>
-            <p class="page-subtitle small">BiolOga MARINA.
+            <p class="page-subtitle small">{{$empleada[0]->estudio}}.
 
             </p>
           </div>
@@ -98,6 +98,10 @@
           <div class="clearfix"></div>
         </div>
       </div>
+
+
+
+      
       <div class="col-md-8 col-sm-12 pull-left posttimeline">
         <div class="panel panel-default">
           <div class="panel-body">

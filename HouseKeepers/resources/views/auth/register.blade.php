@@ -98,6 +98,14 @@
                             </div>
                         </div>
 
+                            <div class="form-group"id="estudio">
+                            <label for="estudio" class="col-md-4 control-label">Estudios </label>
+
+                            <div class="col-md-6">
+                                <input  type="text" class="form-control" name="estudio" value="{{ old('estudio') }}">
+                            </div>
+                        </div>
+
                          <div class="form-group"id="precio" >
                             <label for="precio" class="col-md-4 control-label">Precio </label>
 
@@ -139,12 +147,14 @@ $('#checkboxEmpleada').change(function() {
         $('#direccion').css('display','block'); 
          $('#precio').css('display','block'); 
           $('#hospedaje').css('display','block'); 
+           $('#estudio').css('display','block'); 
          
 
         }else{
        $('#direccion').css('display','none'); 
          $('#precio').css('display','none'); 
           $('#hospedaje').css('display','none'); 
+         $('#estudio').css('display','none');  
              
 
         }

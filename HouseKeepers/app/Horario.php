@@ -15,6 +15,6 @@ class Horario extends Model
          * @var array
          */
            protected $fillable = [
-            'user_id' ,'user_id_contratista', 'lunes', 'martes','miercoles','jueves','viernes','sabado','domingo' ,'fechainicio','fechafin','descripcion',
+            'user_id' ,'user_id_contratista', 'puntos','lunes', 'martes','miercoles','jueves','viernes','sabado','domingo' ,'fechainicio','fechafin','descripcion',
         ];
 }

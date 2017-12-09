@@ -57,6 +57,7 @@
                                 <li><a href="{{ route('perfil.show',auth()->user()->id) }}">Perfil</a></li>
                                      <li><a href="{{route('ms.show',auth()->user()->id)}}">Buzon de Mensajes</a></li>
                                       <li><a href="">Actualizar Cuenta</a></li> 
+                                      <li><a href="{{route('tr.show',auth()->user()->id)}}">Trabajos</a></li> 
                                     <li><a  href="{{ route('cuenta.delete',auth()->user()->id)}}">Eliminar Cuenta</a></li>
                                      
                                       <li>

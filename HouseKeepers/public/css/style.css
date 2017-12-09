@@ -1,11 +1,9 @@
 
-
 #buscador-index{
     
       align-content: center;
      transform: translateX(125%);
 }
-
 
 .card-text{
       background-color:#EBF5FB  ;
@@ -40,7 +38,6 @@ footer p {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-
 /* NAV */
 
 #navegador{
@@ -74,10 +71,9 @@ footer p {
 }
 
 
-
-		/* blue panel */
-	
-	/* COMMON PRICING STYLES */
+        /* blue panel */
+    
+    /* COMMON PRICING STYLES */
     .panel.price,
     .panel.price>.panel-heading{
         border-radius:0px;
@@ -124,31 +120,31 @@ footer p {
         border:0px;
     }
     
-		
-		.price.panel-blue>.panel-heading {
-			color: #fff;
-			background-color: #608BB4;
-			border-color: #78AEE1;
-			border-bottom: 1px solid #78AEE1;
-		}
-		
-			
-		.price.panel-blue>.panel-body {
-			color: #fff;
-			background-color: #73A3D4;
-		}
-				
-		
-		.price.panel-blue>.panel-body .lead{
-				text-shadow: 0px 3px 0px rgba(50,50,50, .3);
-		}
-		
-		.price.panel-blue .list-group-item {
-			color: #333;
-			background-color: rgba(50,50,50, .01);
-			font-weight:600;
-			text-shadow: 0px 1px 0px rgba(250,250,250, .75);
-		}
+        
+        .price.panel-blue>.panel-heading {
+            color: #fff;
+            background-color: #608BB4;
+            border-color: #78AEE1;
+            border-bottom: 1px solid #78AEE1;
+        }
+        
+            
+        .price.panel-blue>.panel-body {
+            color: #fff;
+            background-color: #73A3D4;
+        }
+                
+        
+        .price.panel-blue>.panel-body .lead{
+                text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+        }
+        
+        .price.panel-blue .list-group-item {
+            color: #333;
+            background-color: rgba(50,50,50, .01);
+            font-weight:600;
+            text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+        }
         
         
         
@@ -393,3 +389,89 @@ footer p {
     background-color: #EAF2F8   ;
 }
 
+/**** BASE ****/
+body {
+    color: #888;   
+}
+a {
+    color: #03a1d1;
+    text-decoration: none!important;
+}
+
+/**** LAYOUT ****/
+.list-inline>li {
+    padding: 0 10px 0 0;
+}
+.container-pad {
+    padding: 30px 15px;
+}
+
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.brdr {
+    border: 1px solid #ededed;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px!important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 20px!important;
+}
+
+/* Color  */
+.clr-535353 {
+    color: #535353;
+}
+
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+.con {
+    background: url("http://lorempixel.com/850/280/nature/8/");
+    background-size: cover;
+}
+.con2{
+    
+    background: url("http://lorempixel.com/850/280/city/9/");
+    background-size: cover;
+}

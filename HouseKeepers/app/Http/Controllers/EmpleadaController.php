@@ -55,7 +55,17 @@ class EmpleadaController extends Controller
     public function show($id)
     {
           $empleada = User::findOrFail($id);
-        return view('perfil',compact('empleada'));
+        
+
+        $comentarios = User
+        ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
+        ->where('user_id_receive', '=', $id) 
+        ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
+        ->orderBy('comentarios.id','DESC')
+        ->getQuery() 
+        ->get();
+
+        return view('perfil',compact('empleada','comentarios'));
     }
 
     /**
@@ -108,7 +118,11 @@ class EmpleadaController extends Controller
     		$empleada->save();
     	}
  
-    return view('perfil',compact('empleada'));
+ //   return view('perfil',compact('empleada'));
+
+ 
+ return redirect()->back();
+ ;
 
     
 }
@@ -179,7 +193,7 @@ class EmpleadaController extends Controller
                      ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
                      ->where('user_id_receive', '=', $id) 
                      ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
-                    
+                     ->orderBy('comentarios.id','DESC')
                      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
                      ->get();
                  

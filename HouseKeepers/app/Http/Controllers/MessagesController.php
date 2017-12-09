@@ -73,7 +73,7 @@ class MessagesController extends Controller
                     ::join('messages', 'users.id', '=', 'messages.user_id_receive')
                     ->where('user_id', '=', $id) 
                     ->select('users.nombre', 'users.apellido', 'users.image', 'messages.message','messages.id','messages.ingreso')
-                   
+                    ->orderBy('messages.id','DESC')
                     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
                     ->get();
                 
