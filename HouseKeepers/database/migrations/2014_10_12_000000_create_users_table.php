@@ -23,13 +23,14 @@ class CreateUsersTable extends Migration
             $table->integer('edad');
             $table->string('password');
             $table->integer('telefono');
-            $table->integer('estudio')->nullable();
+            $table->string('estudio')->nullable();
             $table->boolean('empleada')->default(0);
             $table->boolean('activa')->default(1);
             $table->boolean('hospedaje')->nullable();
             $table->string('direccion')->nullable();
             $table->double('precio')->nullable();
             $table->date('ingreso')->nullable();
+            $table->integer('puntos')->default(0);
             $table->string('image')->default('default.jpg');
             $table->rememberToken();
             $table->timestamps();

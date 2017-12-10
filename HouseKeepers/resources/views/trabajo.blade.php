@@ -72,7 +72,7 @@
                                 <a href="#" target="_parent"></a>
 
                                 <h4 class="media-heading">
-                                  <a href="#" target="_parent">${{((auth()->user()->precio)*($cont))*4}} <small class="pull-right">{{auth()->user()->nombre}}</small></a></h4>
+                                  <a href="#" target="_parent">${{$row->precio}} <small class="pull-right">{{auth()->user()->nombre}}</small></a></h4>
 
 
                                 <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
@@ -87,10 +87,16 @@
 
                                 <p class="hidden-xs">{{$row->descripcion}}</p><span class="fnt-smaller fnt-lighter fnt-arial">Dias: {{$des}}</span>
                                </div>
+                               
                                 <a href="{{ route('housekeepers.show',$row->user_id_contratista ) }}" target=""> <small class="pull-right">VER CONTRATISTA</small></a></h4>
+                               @if(auth()->user()->empleada ==0)
+                               
+                              
+                               
+  
   <!-- Trigger the modal with a button -->
-  <a type="button" class="" data-toggle="modal" data-target="#myModal" href="" target=""> <small class="pull-left">CALIFICAR</small></a></h4>
-
+  <a type="button" class="" id="botoncalificar" data-toggle="modal" data-target="#myModal" href="" target=""> <small class="pull-left">CALIFICAR</small></a></h4>
+  @endif 
               <!-- Modal -->
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
@@ -106,20 +112,25 @@
                       <h4 class="modal-title" style="text-align:center;">HELPERS</h4>
                    
                     </div>
+                    @if($row->puntos == 0)
                     <div class="modal-body">
                       
                   <p>Califica a tu empleada por el trabajo realizado y con ello premiarle su esfuerzo</p>
                   <div class="col-md-6">
-                  <input type="number" style="text-align:center;" name="calificacion" id="cantidad" min="0" max="100"></input>
+                  <input type="number" style="text-align:center;" name="calificacion" id="cantidad" min="1" max="100"></input>
 </div>
                       </br>
                       </br>
                     </div>
+                    
                     <div class="modal-footer">
-                      <button type="submit" align="center" class="btn btn-success" >Calificar</button>
+                      <button type="submit" align="center" id="botoncalificar" class="btn btn-success" >Calificar</button>
                     </div>
-
-
+                    @else
+                     <div class="modal-body">
+                       <p>Trabajo anteriormente calificado.</p>
+                    </div>
+                    @endif
                   </div>
                   </form>
 
@@ -146,15 +157,3 @@
 @endsection
 
 
-@section('script')
-<script>
-function validarSiNumero(numero){
-    if (!/^([0-100])*$/.test(numero))
-      alert("El valor " + numero + " no es un número");
-  }
-
-</script>
-
-
-
-@endsection

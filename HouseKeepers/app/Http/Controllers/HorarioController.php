@@ -62,7 +62,9 @@ class HorarioController extends Controller
      */
     public function ver($id)
     {
-        $horarios = Horario::where('user_id',$id)->orderBy('id','DESC')->get();
+        $horarios = Horario::where('user_id',$id)
+        ->orwhere('user_id_contratista','=' ,$id)
+        ->orderBy('id','DESC')->get();
        //print_r($horario);die;
         return view('trabajo',compact('horarios'));
     }
@@ -99,9 +101,22 @@ class HorarioController extends Controller
      */
     public function calificar(Request $request , $id)
     {
+        $horario = Horario::findOrFail($id);
         $calificacion = $request->input('calificacion');
-        print_r($calificacion);die;
-        return view('calificar');
+        if($horario->puntos >= 1){
+            return redirect()->back()->with('alert', 'Trabajo Ya calificado.');
+        }else{
+
+        
+        $horario->puntos =$calificacion;
+        $horario->save();
+
+        $empleada =User::findOrFail($horario->user_id);
+        $puntos = $empleada->puntos;
+        $empleada->puntos = $puntos +$calificacion;
+        $empleada->save();
+        return redirect()->back();
+        }
     }
 
     /**

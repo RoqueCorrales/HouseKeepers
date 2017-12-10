@@ -98,7 +98,9 @@
                     <li><i class="fa fa-check"></i>Informacion</li>
 
                 </ul>
-                
+                <div class="center-block">
+                <a  class="btn btn-primary"  href="{{ route('ver.top3') }}" type="button"  role="button">TOP 3</a>	
+           </div>
             </div>
             </div>
                 

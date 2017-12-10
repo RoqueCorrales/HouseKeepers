@@ -27,7 +27,7 @@ class CrearTablaHorarios extends Migration
             $table->date('fechainicio');
             $table->date('fechafin');
             $table->integer('puntos')->default(0);
-
+            $table->double('precio');
             $table->longText('descripcion');
             $table->timestamps();
         });

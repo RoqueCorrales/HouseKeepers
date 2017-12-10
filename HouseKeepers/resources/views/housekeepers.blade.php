@@ -34,7 +34,7 @@
             <h1 class="small">Telefono : {{ $empleada[0]->telefono }}</h1>
             <h1 class="small">Correo : {{ $empleada[0]->email }} </h1>
             <h1 class="small">Procedencia : {{ $empleada[0]->direccion}} </h1>
-               <h1 class="small">Calificaciones : 100</h1>
+               <h1 class="small">Calificaciones : {{ $empleada[0]->puntos}} </h1>
               
           </div>
           <div class="clearfix"></div>

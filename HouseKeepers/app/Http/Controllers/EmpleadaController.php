@@ -126,6 +126,18 @@ class EmpleadaController extends Controller
 
     
 }
+ public function top(){
+
+ 
+    $empleadas= User::where('empleada', '1')
+    ->orderBy('puntos','DESC')
+    ->take(3)->get();
+
+    return view('top',compact('empleadas'));
+
+
+  
+ }
 
 
 

@@ -469,9 +469,16 @@ a {
 .con {
     background: url("http://lorempixel.com/850/280/nature/8/");
     background-size: cover;
+    
 }
 .con2{
     
     background: url("http://lorempixel.com/850/280/city/9/");
     background-size: cover;
+    
+}
+#fondotop {
+    background: url("http://lorempixel.com/850/280/nightlife/5/");
+    background-size: cover;
+  
 }

@@ -38,12 +38,15 @@
           
             <h1 class="small">Telefono : {{ $empleada->telefono }}</h1>
             <h1 class="small">Correo : {{ $empleada->email }} </h1>
+             @if(auth()->user()->empleada ==1)
             <h1 class="small">Procedencia : {{ $empleada->direccion}} </h1>
-             <h1 class="small">Calificaciones : 100</h1>
+             <h1 class="small">Calificaciones : {{ $empleada->puntos}} </h1>
+             @endif
               
           </div>
           <div class="clearfix"></div>
         </div>
+         @if(auth()->user()->empleada ==1)
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Estudios Realizados</h1>
@@ -65,6 +68,7 @@
          
           <div class="clearfix"></div>
         </div>
+        @endif
       </div>
 
 

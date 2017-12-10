@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
-
-
-
 @section('content')
-		
+
+ 		
 <div class="container">
 	<div class="row">
 <?php 
@@ -15,8 +13,8 @@
 		<div class="col-lg-3 col-sm-6">
 	
 	
-            <div class="card hovercard">
-                <div class="cardheader">
+            <div  class="card hovercard">
+                <div id="fondotop" class="cardheader">
 
                 </div>
                 <div class="avatar">
@@ -65,5 +63,6 @@
     <br>
     <br>
 </div>
-
 @endsection
+
+ 

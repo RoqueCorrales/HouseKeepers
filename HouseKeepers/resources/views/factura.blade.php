@@ -26,7 +26,7 @@
             
               <form method="POST" action="{{route('guardar.horario')}}">
               {{ csrf_field() }} 
-              
+              <textarea class="form-control" style="display:none;"  name="precio">{{ $monto }}</textarea>
                 <textarea class="form-control" style="display:none;"  name="user_id">{{ $horario->user_id }}</textarea>  
                  <textarea class="form-control" style="display:none;"  name="user_id_contratista">{{$horario->user_id_contratista }}</textarea>  
                   <textarea class="form-control" style="display:none;"  name="lunes">{{$horario->lunes }}</textarea>  

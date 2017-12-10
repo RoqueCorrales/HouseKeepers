@@ -47,6 +47,7 @@ Route::get('empleada/delete/{id}', 'EmpleadaController@destroy')->name('cuenta.d
 Route::post('empleada/buscar', 'EmpleadaController@buscar')->name('empleada.buscar');
 Route::get('trabajos/{id}','HorarioController@ver')->name('tr.show');
 Route::post('housekeepers/calificar/{id}', 'HorarioController@calificar')->name('tra.calificar');
+Route::get('TOP3', 'EmpleadaController@top')->name('ver.top3');
 
 
 
