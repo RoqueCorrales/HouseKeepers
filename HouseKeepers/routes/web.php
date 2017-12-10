@@ -48,6 +48,7 @@ Route::post('empleada/buscar', 'EmpleadaController@buscar')->name('empleada.busc
 Route::get('trabajos/{id}','HorarioController@ver')->name('tr.show');
 Route::post('housekeepers/calificar/{id}', 'HorarioController@calificar')->name('tra.calificar');
 Route::get('TOP3', 'EmpleadaController@top')->name('ver.top3');
+Route::post('empleada/actualizar/{id}', 'EmpleadaController@update')->name('empleada.update');
 
 
 

@@ -61,7 +61,7 @@
   }
                                 ?>
                     <!-- Begin Listing: 609 W GRAVERS LN-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing ">
                         <div class="media">
                             <a class="pull-left" href="#" target="_parent">
                             <img alt="image" class="img-responsive" src="/uploads/avatars/logo.png" ></a>
@@ -87,8 +87,9 @@
 
                                 <p class="hidden-xs">{{$row->descripcion}}</p><span class="fnt-smaller fnt-lighter fnt-arial">Dias: {{$des}}</span>
                                </div>
-                               
+                                @if(auth()->user()->empleada ==1)
                                 <a href="{{ route('housekeepers.show',$row->user_id_contratista ) }}" target=""> <small class="pull-right">VER CONTRATISTA</small></a></h4>
+                               @endif
                                @if(auth()->user()->empleada ==0)
                                
                               
@@ -140,13 +141,13 @@
             </div>
             <br>
                         </div>
-                    </div><!-- End Listing-->
+                    <!-- End Listing-->
 
 
 
  <br>
       <?php }
-				}?> 
+				}?>  </div>
 
                 </div>
 

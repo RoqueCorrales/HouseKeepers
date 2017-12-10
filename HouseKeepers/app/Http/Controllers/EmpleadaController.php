@@ -86,10 +86,59 @@ class EmpleadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $data, $id)
     {
-        //
-    }
+        $hos=0;
+        $valor =0;
+        $empleada = User::findOrFail($id);
+       if (isset($data['empleada'])) {
+
+          if($data['empleada']=='on'){
+            $valor= 1;
+            if (isset($data['hospedaje'])) {
+          if($data['hospedaje']=='on'){
+            $hos= 1;
+          }
+            }
+
+         }
+          
+          
+       }
+        $data['empleada']=$valor;
+       $data['hospedaje']=$hos;
+
+ 
+
+              
+   
+  
+
+
+
+   // print_r($data);die;
+    
+          $empleada->nombre = $data['nombre'];
+          $empleada->apellido = $data['apellido'];
+          
+          $empleada->email=$data['email'];
+          $empleada->edad =$data['edad'];
+          $empleada->telefono = $data['telefono'];
+          $empleada->empleada=$data['empleada'];
+          $empleada->hospedaje = $data['hospedaje'];           
+          $empleada->direccion = $data['direccion'];           
+          $empleada->precio = $data['precio'];
+          $empleada->ingreso=$data['ingreso'];
+          $empleada->estudio=$data['estudio'];
+          
+
+
+          $empleada->save();
+
+          return redirect()->back();
+      
+   }
+    
 
     /**
      * Remove the specified resource from storage.

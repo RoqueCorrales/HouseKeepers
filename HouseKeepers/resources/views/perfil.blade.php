@@ -32,7 +32,8 @@
       <div class="col-md-4 col-sm-12 pull-right">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h1 class="page-header small">Informacion Personal</h1>
+            <h1 class="page-header small">Informacion Personal <a type="button"  data-toggle="modal" data-target="#myModal"class="pull-right" href="">Actualizar</a></h1>
+            
             
        
           
@@ -138,9 +139,190 @@
 <br>
 <br>
 </div>
- 
+       <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Actualiza tu cuenta.</h4>
+                     
+                    </div>
+                    <div class="modal-body">
+                      
+
+
+            <div class="panel panel-default">
+               
+
+{{$errors}}
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ route('empleada.update' ,auth()->user()->id) }}" >
+                        {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                            <label for="nombre" class="col-md-4 control-label">Nombre</label>
+
+                            <div class="col-md-6">
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ $empleada->nombre }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apellido" class="col-md-4 control-label">Apellido </label>
+
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control" name="apellido"value="{{  $empleada->apellido }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Correo</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{  $empleada->email }}"required>
+                            </div>
+                        </div>
+
+                       
+
+                        
+
+                         
+
+
+                         
+
+                         <div class="form-group">
+                            <label for="edad" class="col-md-4 control-label">Edad </label>
+
+                            <div class="col-md-6">
+                                <input id="edad" type="number" class="form-control" name="edad" value="{{  $empleada->edad}}" required>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="telefono" class="col-md-4 control-label">Telefono </label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="number" class="form-control" name="telefono"value="{{  $empleada->telefono }}" required>
+                            </div>
+                        </div>
+
+                           <div class="form-group">
+                            <label for="telefono" class="col-md-4 control-label">Deseas ser empleada? </label>
+                          @if( $empleada->empleada == 1)
+                            <div class="col-md-6">
+                                <input id="checkboxEmpleada" type="checkbox" name="empleada"   checked="checked">SI<br>
+                                </div>
+                        </div>
+                          <div class="form-group"id="direccion">
+                            <label for="direccion" class="col-md-4 control-label">Direccion </label>
+
+                            <div class="col-md-6">
+                                <input  type="text" class="form-control" name="direccion" value="{{ $empleada->direccion }}">
+                            </div>
+                        </div>
+
+                            <div class="form-group"id="estudio">
+                            <label for="estudio" class="col-md-4 control-label">Estudios </label>
+
+                            <div class="col-md-6">
+                                <input  type="text" class="form-control" name="estudio" value="{{ $empleada->estudio }}">
+                            </div>
+                        </div>
+
+                         <div class="form-group"id="precio" >
+                            <label for="precio" class="col-md-4 control-label">Precio </label>
+
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" name="precio"value="{{ $empleada->precio }}" >
+                            </div>
+                        </div>
+                         @if($empleada->hospedaje==1)
+                         <div class="form-group" id="hospedaje">
+                            <label for="hospedaje" class="col-md-4 control-label">Hospedaje </label>
+
+                            <div class="col-md-6">
+                                <input id="checkboxhospedaje" type="checkbox" checked="checked" name="hospedaje">SI<br>
+                      
+                            </div>
+                        </div>
+                        @else
+                        <div class="form-group" id="hospedaje">
+                            <label for="hospedaje" class="col-md-4 control-label">Hospedaje </label>
+
+                            <div class="col-md-6">
+                                <input id="checkboxhospedaje" type="checkbox"  name="hospedaje">SI<br>
+                      
+                            </div>
+                        </div>
+
+                        @endif
+                         @endif
+                          @if( $empleada->empleada == 0)
+                            <div class="col-md-6">
+                                <input id="checkboxEmpleada" type="checkbox" name="empleada"   checked="checked">SI<br>
+                                </div>
+                        </div>
+                         @endif
+                       
+
+
+                       
+                   
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Actualizar Cuenta.
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+           
+     
+<br>
+<br>
+
+
+                     
+                      <br>
+                      <br>
+                    </div>
+                    
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <br>
+
  
  
 @endsection
 
- 
+ @section('script')
+<script>
+$('#checkboxEmpleada').change(function() {
+        if($(this).is(":checked")) {
+        $('#direccion').css('display','block'); 
+         $('#precio').css('display','block'); 
+          $('#hospedaje').css('display','block'); 
+           $('#estudio').css('display','block'); 
+         
+
+        }else{
+       $('#direccion').css('display','none'); 
+         $('#precio').css('display','none'); 
+          $('#hospedaje').css('display','none'); 
+         $('#estudio').css('display','none');  
+             
+
+        }
+    });
+</script>
+@endsection
