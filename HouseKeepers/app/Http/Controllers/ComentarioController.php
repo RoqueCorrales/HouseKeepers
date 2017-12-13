@@ -98,8 +98,7 @@ class ComentarioController extends Controller
     public function destroy($id)
     {
         Comentario::destroy($id);
-        
-        return redirect()->back();
+       return redirect()->back();
         
     }
 }

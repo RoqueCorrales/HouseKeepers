@@ -118,7 +118,7 @@
                       
                   <p>Califica a tu empleada por el trabajo realizado y con ello premiarle su esfuerzo</p>
                   <div class="col-md-6">
-                  <input type="number" style="text-align:center;" name="calificacion" id="cantidad" min="1" max="100"></input>
+                  <input type="number" style="text-align:center;" name="calificacion" id="cantidad" value = "1"min="1" max="100"></input>
 </div>
                       </br>
                       </br>

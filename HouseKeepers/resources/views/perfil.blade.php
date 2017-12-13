@@ -94,7 +94,7 @@
             <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
             <ul class="dropdown-menu pull-right" role="menu">
               <li><a href="{{ route('comentario.delete',$row->id)}}">Eliminar</a></li>
-              <li><a href="">Modificar</a></li>
+             
             </ul>
           </div>
           <div class="col-md-12">

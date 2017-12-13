@@ -27,11 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $date = Carbon::now();
-        
+       
          $date->toDateString();
          $id= auth()->user()->id; 
-         $empleada = User::findOrFail($id);
-         $empleada->ingreso = $date;
+        $empleada = User::findOrFail($id);
+        $empleada->ingreso = $date;
          $empleada->save();
      
         return view('/principal');

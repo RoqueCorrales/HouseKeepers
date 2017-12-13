@@ -3,7 +3,7 @@
 @section('content')
 
 
- <div class="container">
+ <div class="container container-fluid">
 <div class="row">
 
       <div class="col-md-12 text-center ">
@@ -113,13 +113,18 @@
 					{ ?>
         <div class="panel panel-default"> 
         <div class="panel-body">
+        <?php 
+				if (($row->user_id==auth()->user()->id )||($row->user_id_receive==auth()->user()->id )){?>
           <div class="btn-group pull-right postbtn">
+          
             <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
             <ul class="dropdown-menu pull-right" role="menu">
+            
               <li><a href="{{ route('comentario.delete',$row->id)}}">Eliminar</a></li>
-              <li><a href="">Modificar</a></li>
+              
             </ul>
           </div>
+         <?php } ?>
           <div class="col-md-12">
             <div class="media">
               <div class="media-left"> <a href=""> <img src="/uploads/avatars/{{ $row->image }}" style="width:100px; height:100px; float:center; border-radius:50%; "/ alt="" class="media-object"> </a> </div>

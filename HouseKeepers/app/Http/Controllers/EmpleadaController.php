@@ -60,7 +60,7 @@ class EmpleadaController extends Controller
         $comentarios = User
         ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
         ->where('user_id_receive', '=', $id) 
-        ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
+        ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.user_id_receive','comentarios.user_id', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
         ->orderBy('comentarios.id','DESC')
         ->getQuery() 
         ->get();
@@ -253,7 +253,7 @@ class EmpleadaController extends Controller
                      $comentarios = User
                      ::join('comentarios', 'users.id', '=', 'comentarios.user_id_receive')
                      ->where('user_id_receive', '=', $id) 
-                     ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
+                     ->select('users.nombre', 'users.apellido', 'users.image', 'comentarios.user_id_receive','comentarios.user_id', 'comentarios.comentario','comentarios.ingreso','comentarios.id')
                      ->orderBy('comentarios.id','DESC')
                      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
                      ->get();
