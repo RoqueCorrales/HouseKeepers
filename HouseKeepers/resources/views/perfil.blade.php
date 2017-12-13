@@ -61,14 +61,7 @@
           <div class="clearfix"></div>
         </div>
        
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="page-header small">Calificaciones</h1>
-            <p class="page-subtitle small">Exito de mes</p>
-          </div>
-         
-          <div class="clearfix"></div>
-        </div>
+        
         @endif
       </div>
 

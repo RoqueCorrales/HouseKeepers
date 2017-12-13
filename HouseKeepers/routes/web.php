@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('principal');
-});
+
 
 
 Route::get('/empleadas', function () {
@@ -54,7 +52,8 @@ Route::post('empleada/actualizar/{id}', 'EmpleadaController@update')->name('empl
 
 Auth::routes();
 
+
 Route::post('empleadas','EmpleadaController@search');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 //Route::resource('empleada', 'EmpleadaController');
 //Route::resource('comentario','ComentarioController');

@@ -33,24 +33,12 @@
           
             <h1 class="small">Telefono : {{ $empleada[0]->telefono }}</h1>
             <h1 class="small">Correo : {{ $empleada[0]->email }} </h1>
-            <h1 class="small">Procedencia : {{ $empleada[0]->direccion}} </h1>
-               <h1 class="small">Calificaciones : {{ $empleada[0]->puntos}} </h1>
+
               
           </div>
           <div class="clearfix"></div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="page-header small">Estudios Realizados</h1>
-            <p class="page-subtitle small">{{$empleada[0]->estudio}}.
 
-            </p>
-          </div>
-          <div class="col-md-12">
-          
-          </div>
-          <div class="clearfix"></div>
-        </div>
        
         
         <div class="panel panel-default">
