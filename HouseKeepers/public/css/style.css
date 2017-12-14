@@ -467,7 +467,7 @@ a {
 }
 
 .con {
-    background: url("http://lorempixel.com/850/280/nature/8/");
+    background-image: url("http://lorempixel.com/850/280/nature/8/");
     background-size: cover;
     
 }

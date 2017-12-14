@@ -23,8 +23,8 @@
         </div>
       </div
        <br>
-      <!-- /.col-md-12 -->
-      <div class="col-md-4 col-sm-12 pull-right">
+      <!-- /.col-md-12  en este div lleva pull´rigth-->
+      <div class="col-md-4 col-sm-12 ">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Informacion Personal</h1>
@@ -40,7 +40,7 @@
         </div>
 
        
-        
+      
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Contratar</h1>
@@ -63,7 +63,7 @@
                   
                  <form method="POST" action="{{ route('message.save')}}">
               {{ csrf_field() }} 
-                <textarea class="form-control" name="mensaje" placeholder="Que opinas de mis servicios?"></textarea>
+                <textarea class="form-control" name="mensaje" placeholder="Que opinas de mis servicios?" required></textarea>
             <textarea class="form-control" style="display:none;"  name="idUser">{{auth()->user()->id }}</textarea>  
                 <textarea class="form-control" style="display:none;"  name="idEmpleada">{{$empleada[0]->id}}</textarea> 
                 <br>
@@ -85,6 +85,7 @@
          
           <div class="clearfix"></div>
         </div>
+       
       </div>
 
 
@@ -96,7 +97,7 @@
             
               <form method="POST" action="{{ route('comentario.save') }}">
               {{ csrf_field() }} 
-                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?"></textarea>
+                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?" required></textarea>
             <textarea class="form-control" style="display:none;"  name="idUser">{{auth()->user()->id }}</textarea>  
                 <textarea class="form-control" style="display:none;"  name="idEmpleada">{{$empleada[0]->id}}</textarea> 
                 <br>

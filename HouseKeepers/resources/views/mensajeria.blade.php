@@ -22,8 +22,9 @@
                     {{$row->nombre}} {{$row->apellido}}</h4>
                 <p>
                   {{$row->message}}<br>
-                  route('message.del',$row->id )
-                    <a href="">Eliminar</a>&#160;&#160;<a href="">Responder</a></p>
+                  
+                    <a href="{{route('message.del',$row->id)}}">Eliminar</a>
+                    </p>
             </div>
              <?php }
 				}else{ ?> 

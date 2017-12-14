@@ -21,15 +21,49 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p class="align-center" id="textEligeDias">Elige el/los días</p>
-                            
-                          <label><input id="lunes" type="checkbox" name="lunes" value="1">Lunes </label>
-                     <label><input id="martes" type="checkbox" name="martes" value="1">Martes </label>
-                      <label><input id="miercoles"type="checkbox" name="miercoles" value="1">Miercoles </label>
-                       <label><input id="jueves" type="checkbox" name="jueves" value="1">Jueves </label>
-                        <label><input id="viernes" type="checkbox" name="viernes" value="1">Viernes </label>
-                         <label><input id="sabado" type="checkbox" name="sabado" value="1">Sabado </label>
-                          <label><input id="domingo" type="checkbox" name="domingo" value="1">Domingo </label>
+                  
+                   @if(in_array("lunes",$array))    
+                   
+                          <label style="display:none;"><input id="lunes" type="checkbox"   name="lunes" value="1">Lunes </label>
+                        @else
                         
+                    <label><input id="lunes" type="checkbox" name="lunes" value="1">Lunes </label>
+                   @endif
+                   
+                    @if(in_array("martes",$array))
+                     <label style="display:none;"><input id="martes" type="checkbox" name="martes" value="1">Martes </label>
+@else
+                     <label ><input id="martes" type="checkbox" name="martes" value="1">Martes </label>
+@endif
+                      @if(in_array("miercoles",$array))
+                      <label style="display:none;"><input id="miercoles"type="checkbox" name="miercoles" value="1">Miercoles </label>
+@else
+                      <label ><input id="miercoles"type="checkbox" name="miercoles" value="1">Miercoles </label>
+@endif
+
+                       @if(in_array("jueves",$array))
+                       <label style="display:none;"><input id="jueves" type="checkbox" name="jueves" value="1">Jueves </label>
+@else
+                       <label ><input id="jueves" type="checkbox" name="jueves" value="1">Jueves </label>
+@endif
+
+                        @if(in_array("viernes",$array))
+                        <label style="display:none;"><input id="viernes" type="checkbox" name="viernes" value="1">Viernes </label>
+@else
+                        <label><input id="viernes" type="checkbox" name="viernes" value="1">Viernes </label>
+@endif
+                         @if(in_array("sabado",$array))
+                         <label style="display:none;"><input id="sabado" type="checkbox" name="sabado" value="1">Sabado </label>
+@else
+                         <label ><input id="sabado" type="checkbox" name="sabado" value="1">Sabado </label>
+@endif
+
+                          @if(in_array("domingo",$array))
+                          <label style="display:none;"><input id="domingo" type="checkbox" name="domingo" value="1">Domingo </label>
+@else                      
+                          <label ><input id="domingo" type="checkbox" name="domingo" value="1">Domingo </label>
+@endif
+
 
                           
 

@@ -28,8 +28,8 @@
            
         </div>
       </div>
-      <!-- /.col-md-12 -->
-      <div class="col-md-4 col-sm-12 pull-right">
+  <!-- /.col-md-12  en este div lleva pull´rigth-->
+      <div class="col-md-4 col-sm-12 ">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="page-header small">Informacion Personal <a type="button"  data-toggle="modal" data-target="#myModal"class="pull-right" href="">Actualizar</a></h1>
@@ -73,7 +73,7 @@
             
               <form method="POST" action="{{ route('comentario.save') }}">
               {{ csrf_field() }} 
-                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?"></textarea>
+                <textarea class="form-control" name="comentario" placeholder="Que opinas de mis servicios?" required></textarea>
             <textarea class="form-control" style="display:none;"  name="idUser">{{auth()->user()->id }}</textarea>  
                 <textarea class="form-control" style="display:none;"  name="idEmpleada">{{$empleada->id}}</textarea> 
                 <br>
@@ -150,7 +150,7 @@
             <div class="panel panel-default">
                
 
-{{$errors}}
+
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('empleada.update' ,auth()->user()->id) }}" >

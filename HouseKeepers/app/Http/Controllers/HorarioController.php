@@ -9,6 +9,16 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use  Carbon\Carbon;
 class HorarioController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,8 +61,62 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
+        
+        $array  = array();
         $empleada = User::where('id',$id)->get();
-        return view('cotizar',compact('empleada'));
+        $horarios = Horario::where('user_id',$id)->get();
+
+        foreach($horarios as $horario){
+//print_r($horario->martes);die;
+            if($horario->lunes ==1){
+               
+                if (!in_array("lunes", $array)) {
+                    $a ="lunes";
+                    $array[] =$a;
+                }
+                
+               
+            } 
+           
+             if($horario->martes ==1){
+                if (!in_array("martes", $array)) {
+                $a= "martes";
+                $array[] =$a;
+                }
+               
+             }
+             if($horario->miercoles ==1){
+                if (!in_array("miercoles", $array)) {
+                   $a ="miercoles";
+                    $array[] =$a;
+                }
+             }
+             if($horario->jueves ==1){
+                if (!in_array("jueves", $array)) {
+                    $a ="jueves";
+                    $array[] =$a;
+                }
+             }
+             if($horario->viernes ==1){
+                if (!in_array("viernes", $array)) {
+                    $a ="viernes";
+                    $array[] =$a;}
+             }
+             if($horario->sabado ==1){
+                if (!in_array("sabado", $array)) {
+                    $a ="sabado";
+                    $array[] =$a;
+                }
+             }
+             if($horario->domingo ==1){
+                if (!in_array("domingo", $array)) {
+                    $a ="domingo";
+                    $array[] =$a;}
+             }
+        }
+        
+
+        return view('cotizar',compact('empleada','array'));
     }
  /**
      * Display the specified resource.
@@ -201,7 +265,7 @@ class HorarioController extends Controller
             }
        
             if($request['domingo']==1){
-                $domingoes =1;
+                $domingo =1;
                 $totaldias=$totaldias +1;
             }
         

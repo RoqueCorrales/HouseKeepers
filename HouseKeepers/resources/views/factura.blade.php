@@ -42,7 +42,7 @@
                 <br>
                
                 <button type="submit" class="btn btn-success pull-right">CONTRATAR!</button>
-                <a class="btn btn-md btn-block btn-warning" href="#">CANCELAR</a>
+                
               </form>
            
            

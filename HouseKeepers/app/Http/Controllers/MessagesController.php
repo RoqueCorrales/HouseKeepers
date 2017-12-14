@@ -10,6 +10,15 @@ use App\User;
 
 class MessagesController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -69,13 +78,15 @@ class MessagesController extends Controller
       //   $query = ('SELECT u.nombre, u.apellido,u.image, c.comentario FROM
        //   users u, comentarios c WHERE u.id =?');
                   //$res=DB::select($query);
-                    $mensajes = User
-                    ::join('messages', 'users.id', '=', 'messages.user_id_receive')
-                    ->where('user_id', '=', $id) 
-                    ->select('users.nombre', 'users.apellido', 'users.image', 'messages.message','messages.id','messages.ingreso')
-                    ->orderBy('messages.id','DESC')
-                    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-                    ->get();
+                  $mensajes = User
+                  ::join('messages', 'users.id', '=', 'messages.user_id_receive')
+                  ->where('user_id_receive', '=', $id) 
+                  ->select('users.nombre', 'users.apellido', 'users.image', 
+                  'messages.message','messages.id','messages.ingreso')
+                  ->orderBy('messages.id','DESC')
+                  ->getQuery() 
+                  ->get();
+                   
                 
          //print_r($result);die;
        return view('mensajeria',compact('empleada','mensajes'));
@@ -114,5 +125,6 @@ class MessagesController extends Controller
     public function destroy($id)
     {
         Messages::destroy($id);  
+        return back();
     }
 }
