@@ -90,7 +90,7 @@
                                 @if(auth()->user()->empleada ==1)
                                 <a href="{{ route('housekeepers.show',$row->user_id_contratista ) }}" target=""> <small class="pull-right">VER CONTRATISTA</small></a></h4>
                                @endif
-                               @if(auth()->user()->empleada ==0)
+                               @if((auth()->user()->empleada ==0 )|| (auth()->user()->id == $row->user_id_contratista)  )
                                
                               
                                
@@ -116,7 +116,7 @@
                     @if($row->puntos == 0)
                     <div class="modal-body">
                       
-                  <p>Califica a tu empleada por el trabajo realizado y con ello premiarle su esfuerzo</p>
+                  <p>Califica a tu empleada  del 1 al 100 por el trabajo realizado y con ello premiarle su esfuerzo</p>
                   <div class="col-md-6">
                   <input type="number" style="text-align:center;" name="calificacion" id="cantidad" value = "1"min="1" max="100"></input>
 </div>
